@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* Navigation Styles */
+
+.nav-container {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    border: 1px solid yellow;
+} 
+
+@media only screen and (max-width: 900px) {
+    .nav-container  {
+        max-width: 400px;
+    }
+  }
+
+.logo-contaner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+    border: 1px solid red;
+}
+
+.nav-logo-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-logo {
+    width: 50%;
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-logo {
+        width: 80%;
+    }
+    
+  }
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.nav-list {
+  width: 100%;
+  display: flex;
+  list-style-type: none;
+  justify-content: space-evenly;
+  text-align: center;
+  border: 1px solid green;
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-list {
+        flex-direction: column;
+    }
+  }
+
+.nav-item {
+    padding: 20px 10px;
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-item {
+        padding: 10px 20px;
+    }
+  }
+
+
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+/* Video styles */
+
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }   
+
+
+/* What's on styles */
+
+.widget-container {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    border: 1px solid yellow;
+} 
+
+
+  /* Animations */
+
+  .transition-fade {
+    transition: 0.4s;
+    opacity: 1;
+  }
+  
+  html.is-animating .transition-fade {
+    opacity: 0;
+  }
