@@ -1,26 +1,122 @@
-// const swup = new Swup(); // only this line when included with script tag
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     console.log("It's complete")
-// });
-
-// swup.on('pageView', function() {
-//     dataLayer.push({
-//       event: 'VirtualPageview',
-//       virtualPageURL: window.location.pathname,
-//       virtualPageTitle: document.title
-//     });
-//   });
-  
-//   swup.on('contentReplaced', function() {
-//     swup.options.containers.forEach((selector) => {
-//       // load scripts for all elements with 'selector'
-//     });
-//   });
-
 barba.init({
-  // ...
-  sync: true, 
+  transitions: [
+    {
+      name: "opacity-transition",
+      leave(data) {
+        return gsap.to(data.current.container, {
+          opacity: 0,
+          duration: 0.5,
+        });
+      },
+      enter(data) {
+        return gsap.from(data.next.container, {
+          opacity: 1,
+          duration: 0.5,
+        });
+      },
+    },
+    {},
+  ],
+  views: [
+    {
+      namespace: "whats",
+      // beforeEnter or afterEnter works here
+      afterEnter({ next }) {
+        let script = document.createElement("script");
+        console.log(window);
+        script.src = "https://widgets.dice.fm/dice-event-list-widget.js";
+        next.container.appendChild(script);
+        console.log(script);
 
-  transitions: a
-})
+        setTimeout(() => {
+          DiceEventListWidget.create({
+            information: "full",
+            eventTitle: "event",
+            showImages: false,
+            showAudio: true,
+            showNewBadge: false,
+            layout: "list",
+            roundButtons: false,
+            theme: "dark",
+            fontFamily: "inherit",
+            partnerId: "ca4be586",
+            apiKey: "BOPJlQwh5G7RidWh6ZBth3MVRPQblXxJ6Iz5yh5V",
+            version: 2,
+            highlightColour: "white",
+            venues: ["The Steel Yard"],
+          });
+        }, 1);
+      },
+    },
+    {
+      namespace: "hire",
+      // beforeEnter or afterEnter works here
+      afterEnter({ next }) {
+        // if startment
+        let sections = gsap.utils.toArray(".panel");
+
+        let scrollTween = gsap.to(sections, {
+          xPercent: -100 * (sections.length - 1),
+          ease: "none", // <-- IMPORTANT!
+          scrollTrigger: {
+            // It's targetting the entire container class
+            trigger: ".horizontal-scroll-container",
+            // invalidateOnRefresh: true,
+            pin: true,
+            // toggleActions: "play reverse play reverse",
+            scrub: 1,
+            //snap: directionalSnap(1 / (sections.length - 1)),
+            // I thoguht having a start postion would stop the auto play but it has not.
+            start: "+=1",
+            end: "+=3000",
+          },
+        });
+        // This is stopping the animation on load
+        // scrollTween.pause();
+
+        const cards = gsap.utils.toArray(".card");
+        cards.forEach((card) => {
+          gsap.from(card, {
+            scale: 0.8,
+            opacity: 0.5,
+            duration: 0.3,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card,
+              containerAnimation: scrollTween,
+              start: "right 96%",
+              end: "left 4%",
+              toggleActions: "play reverse play reverse",
+              // scrub: true,
+              id: "2",
+              // markers: true,
+            },
+          });
+        });
+
+        const cardGrid = gsap.utils.toArray(".card-grid");
+        cardGrid.forEach((card) => {
+          gsap.from(card, {
+            scale: 0.8,
+            opacity: 0.5,
+            duration: 0.3,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card,
+              containerAnimation: scrollTween,
+              start: "right 96%",
+              end: "left 4%",
+              toggleActions: "play reverse play reverse",
+              // scrub: true,
+              id: "2",
+              // markers: true,
+            },
+          });
+        });
+        // ScrollTrigger.disable(false, true);
+
+        window.history.scrollRestoration = "manual";
+      },
+    },
+  ],
+});

@@ -4,6 +4,49 @@
     font-family: sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+ul {
+  list-style-position: inside;
+}
+
+
+.close-button-container {
+  position: absolute;
+  z-index: 10;
+  top: 5%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, 0%);
+  max-width: 1400px;
+  height: 50px;
+  width: 100px;
+}
+
+.close-button-wrapper {
+  height: 50px;
+  width: 100px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.close-button-wrapper:hover {
+  background-color: #000;
+  cursor: pointer;
+}
+
+/* Buttons */
+.close-button {
+    padding: 10px 20px;
+    font-size: 21px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
 /* Navigation Styles */
 
 .nav-container {
@@ -103,25 +146,194 @@ video {
 
 /* What's on styles */
 
-.widget-container {
-    position: absolute;
+
+
+.dice-widget-container {  
+  position: absolute;
     z-index: 10;
-    top: 50%;
+    top: 10%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%);
-    max-width: 600px;
-    border: 1px solid yellow;
+    transform: translate(-50%, 0%);
+    max-width: 1400px;
+    
 } 
 
 
-  /* Animations */
+/* Hire page sections */
 
-  .transition-fade {
+.container {
+  display: flex;
+  overflow: hidden;
+  width: 500%;
+  height: 100vh;
+}
+
+.move-section {
+  height: 100%;
+  width: 500%;
+}
+
+
+
+.blue {
+  background-color: rgba(0, 0, 255, 0.3);
+  
+}
+
+.red {
+  background-color: rgba(255, 0, 0, 0.3);
+  
+}
+
+.green {
+  background-color: rgba(0, 255, 0, 0.3);;
+  
+}
+
+.card-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hire-card-container {
+  width: 30%;
+  height: 600px;
+  background-color: aqua;
+}
+  /* Animations SWUP */
+  /* .transition-fade {
     transition: 0.4s;
     opacity: 1;
   }
   
   html.is-animating .transition-fade {
     opacity: 0;
+  }
+
+  .move-section {
+    height: 500px;
+    background-color: blue;
+  } */
+
+
+  /* Trying the horizontal scoll animations */
+
+  .horizontal-scroll-container {
+    /* This is the whole horizontal scroll container */
+    width: 400%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    color: #fff;
+  }
+  .panel {
+    /* This is the indivisual pages to scroll through */
+    font-weight: 300;
+    width: 100vw!important;
+    height: 100vh;
+    display: flex;
+    flex: 0 0 100vw;
+  }
+
+
+  .hire-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   width: 100%;
+   height: 100%;
+    
+  
+  }
+
+
+  .hire-intro-page-text {
+    font-size: 2rem;
+    max-width: 800px;
+    text-align: center;
+    font-size: 24px;
+  }
+
+
+
+  .hire-card-container {
+    width: 30%;
+    height: 400px;
+    background-color: aqua;
+  }
+
+  /* Card positioning  */
+  .cards-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .card {
+    /* flex: 0 1 calc(33% - 1em); */
+    scale: 1;
+    opacity: 1;
+    height: 460px;
+    width: 300px;
+    /* background-color: aqua; */
+  }
+
+
+ 
+
+
+/* Card styles */
+.card-white-sqaure {
+ background-color: #fff;
+ height: 20px;
+ width: 220px;
+}
+
+.card-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; 
+  width: 100%;
+}
+
+.card-title {
+  color: #fff;
+  font-size: 2rem;
+}
+
+
+  .grid-wapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 40px;
+  }
+
+  .card-grid {
+    height: 200px;
+    width: 300px;
+    background-color: aqua;
+    margin-bottom: 20px;
+  }
+
+  .card-grid-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
