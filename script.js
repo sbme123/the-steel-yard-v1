@@ -64,7 +64,7 @@ barba.init({
             // invalidateOnRefresh: true,
             pin: true,
             // toggleActions: "play reverse play reverse",
-            scrub: 1,
+            scrub: true,
             //snap: directionalSnap(1 / (sections.length - 1)),
             // I thoguht having a start postion would stop the auto play but it has not.
             start: "+=1",
