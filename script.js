@@ -20,6 +20,17 @@ barba.init({
   views: [
     {
       namespace: "whats",
+      beforeEnter(data) {
+        gsap.to("close-button-container", {
+          opacity: 0.4,
+          duration: 1,
+        });
+        gsap.from("close-button-container", {
+          opacity: 1,
+          duration: 1,
+        });
+      },
+
       // beforeEnter or afterEnter works here
       afterEnter({ next }) {
         let script = document.createElement("script");
@@ -45,35 +56,55 @@ barba.init({
             highlightColour: "white",
             venues: ["The Steel Yard"],
           });
-        }, 1);
+        }, 250);
       },
     },
     {
       namespace: "hire",
       // beforeEnter or afterEnter works here
-      afterEnter({ next }) {
-        // if startment
+      // afterEnter({ next }) {
+      afterEnter(data) {
+        // Resetting the postion of the loading screen.
+        // This is animating the horizontal scroll sections
         let sections = gsap.utils.toArray(".panel");
 
         let scrollTween = gsap.to(sections, {
           xPercent: -100 * (sections.length - 1),
           ease: "none", // <-- IMPORTANT!
           scrollTrigger: {
-            // It's targetting the entire container class
             trigger: ".horizontal-scroll-container",
-            // invalidateOnRefresh: true,
             pin: true,
-            // toggleActions: "play reverse play reverse",
-            scrub: true,
-            //snap: directionalSnap(1 / (sections.length - 1)),
-            // I thoguht having a start postion would stop the auto play but it has not.
+            scrub: 1,
             start: "+=1",
             end: "+=3000",
           },
         });
-        // This is stopping the animation on load
-        // scrollTween.pause();
 
+        // ////////////////////
+
+        // let sections = gsap.utils.toArray(".panel");
+
+        // let scrollTween = gsap.to(sections, {
+        //   xPercent: -100 * (sections.length - 1),
+        //   ease: "none", // <-- IMPORTANT!
+        //   scrollTrigger: {
+        //     // It's targetting the entire container class
+        //     trigger: ".horizontal-scroll-container",
+        //     // invalidateOnRefresh: true,
+        //     pin: true,
+        //     // toggleActions: "play reverse play reverse",
+        //     scrub: 0.1,
+        //     //snap: directionalSnap(1 / (sections.length - 1)),
+        //     // I thoguht having a start postion would stop the auto play but it has not.
+        //     // start: "+=1",
+        //     // start: "top " + sections.offsetTop,
+        //     end: "+=3000",
+        //   },
+        // });
+        // This is stopping the animation on load
+        //  scrollTween.pause();
+
+        // This is controlling teh card effects on the horizontal scroll.
         const cards = gsap.utils.toArray(".card");
         cards.forEach((card) => {
           gsap.from(card, {
