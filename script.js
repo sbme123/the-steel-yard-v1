@@ -2,6 +2,7 @@ barba.init({
   transitions: [
     {
       name: "opacity-transition",
+
       leave(data) {
         return gsap.to(data.current.container, {
           opacity: 0,
@@ -10,34 +11,28 @@ barba.init({
       },
       enter(data) {
         return gsap.from(data.next.container, {
-          opacity: 1,
+          opacity: 0,
           duration: 0.5,
         });
       },
     },
-    {},
   ],
   views: [
     {
       namespace: "whats",
-      beforeEnter(data) {
-        gsap.to("close-button-container", {
-          opacity: 0.4,
-          duration: 1,
-        });
-        gsap.from("close-button-container", {
-          opacity: 1,
-          duration: 1,
-        });
-      },
-
       // beforeEnter or afterEnter works here
-      afterEnter({ next }) {
+      beforeEnter({ next }) {
         let script = document.createElement("script");
         console.log(window);
         script.src = "https://widgets.dice.fm/dice-event-list-widget.js";
         next.container.appendChild(script);
-        console.log(script);
+
+        gsap.set(".dice-widget-container", {
+          opacity: 0,
+          y: 300,
+          x: "-50%",
+          duration: 0.8,
+        });
 
         setTimeout(() => {
           DiceEventListWidget.create({
@@ -56,9 +51,23 @@ barba.init({
             highlightColour: "white",
             venues: ["The Steel Yard"],
           });
-        }, 250);
+        }, 50);
+      },
+
+      afterEnter({ next }) {
+        gsap.from(".dice-widget-container", {
+          opacity: 1,
+          y: 300,
+          duration: 0.8,
+        });
+        gsap.to(".dice-widget-container", {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        });
       },
     },
+
     {
       namespace: "hire",
       // beforeEnter or afterEnter works here

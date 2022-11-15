@@ -1,53 +1,67 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
+    font-family: "Droid Sans Mono"!important;
 }
 
 body {
   overflow-x: hidden!important;
+  background-color: #000;
+  overflow: hidden; /* Hide scrollbars */
 }
 
 ul {
   list-style-position: inside;
 }
 
+video {
+  opacity: 0.1;
+}
+
+/* Font styles */
+
+h1 { font-family: "Droid Sans Mono"; font-size: 26px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 30px; } 
+h2 { font-family: "Droid Sans Mono"; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 28px; }
+h3 { font-family: "Droid Sans Mono"; font-size: 23px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 27px; } 
+p { font-family: "Droid Sans Mono"; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 22px; } 
+li { font-family: "Droid Sans Mono"; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 22px; } 
+blockquote { font-family: "Droid Sans Mono"; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } 
+
+
+/* Close Button at the top of every page */
 
 .close-button-container {
   position: absolute;
-  z-index: 10;
+  z-index: 6;
   top: 5%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, 0%);
-  max-width: 1400px;
-  height: 50px;
-  width: 100px;
-}
-
-.close-button-wrapper {
-  height: 50px;
-  width: 100px;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.close-button-wrapper:hover {
-  background-color: #000;
-  cursor: pointer;
 }
 
 /* Buttons */
 .close-button {
     padding: 10px 20px;
-    font-size: 21px;
+    font-size: inherit;
     border: none;
     cursor: pointer;
+    background-color: #fff;
+    transition: 0.3s;
+}
+
+.close-button:hover {
+  padding: 10px 20px;
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+
 }
 
 
 
-/* Navigation Styles */
+/* Home Navigation Styles */
 
 .nav-container {
     position: absolute;
@@ -57,7 +71,11 @@ ul {
     margin-right: -50%;
     transform: translate(-50%, -50%);
     max-width: 600px;
-    border: 1px solid yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* align-items: center; */
+   
 } 
 
 @media only screen and (max-width: 900px) {
@@ -71,8 +89,8 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 50px;
-    border: 1px solid red;
+    padding-bottom: 10px;
+    
 }
 
 .nav-logo-link {
@@ -83,6 +101,12 @@ ul {
 
 .nav-logo {
     width: 50%;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.nav-logo:hover {
+  opacity: 1;
 }
 
 @media only screen and (max-width: 900px) {
@@ -105,7 +129,7 @@ nav {
   list-style-type: none;
   justify-content: space-evenly;
   text-align: center;
-  border: 1px solid green;
+ padding-bottom: 20px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -129,34 +153,96 @@ nav {
 .nav-item a {
     color: white;
     text-decoration: none;
-    font-size: 21px;
+    opacity: 0.5;
+    transition: 0.3s;
 }
+
+.nav-item a:hover {
+  color: white;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.nav-social-icons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.social-icon-wrapper {
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 300px;
+  height: auto;
+}
+
+.social-icon-container {
+  width: 20px;
+  height: auto;
+  margin-right: 16px;
+}
+
+.social-icon {
+  color: #fff!important;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  opacity: 1;
+}
+
+
 
 /* Video styles */
 
 video {
-    object-fit: cover;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
+    object-fit: cover!important;
+    width: 100vw!important;
+    height: 100vh!important;
+    position: fixed!important;
+    top: 0!important;
+    left: 0!important;
   }   
+
+
+  /* About Page Styles */
+
+
+  .about-content-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+
+  .about-page-text {
+    max-width: 800px;
+    text-align: center;
+    font-size: inherit;
+    color: #fff;
+  }
 
 
 /* What's on styles */
 
-
-
 .dice-widget-container {  
-  position: absolute;
+    position: absolute;
     z-index: 10;
     top: 10%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, 0%);
     max-width: 1400px;
-    
 } 
 
 
@@ -175,22 +261,6 @@ video {
 }
 
 
-
-.blue {
-  background-color: rgba(0, 0, 255, 0.3);
-  
-}
-
-.red {
-  background-color: rgba(255, 0, 0, 0.3);
-  
-}
-
-.green {
-  background-color: rgba(0, 255, 0, 0.3);;
-  
-}
-
 .card-wrapper {
   width: 100%;
   height: 100%;
@@ -204,23 +274,8 @@ video {
   height: 600px;
   background-color: aqua;
 }
-  /* Animations SWUP */
-  /* .transition-fade {
-    transition: 0.4s;
-    opacity: 1;
-  }
-  
-  html.is-animating .transition-fade {
-    opacity: 0;
-  }
-
-  .move-section {
-    height: 500px;
-    background-color: blue;
-  } */
-
-
-  /* Trying the horizontal scoll animations */
+ 
+/* Trying the horizontal scoll animations */
 
   .horizontal-scroll-container {
     /* This is the whole horizontal scroll container */
@@ -231,6 +286,7 @@ video {
     color: #fff;
     overflow-x: hidden!important;
   }
+
   .panel {
     /* This is the indivisual pages to scroll through */
     font-weight: 300;
@@ -246,18 +302,15 @@ video {
     display: flex;
     align-items: center;
     justify-content: center;
-   width: 100%;
-   height: 100%;
-    
-  
+    width: 100%;
+    height: 100%;
   }
 
 
   .hire-intro-page-text {
-    font-size: 2rem;
     max-width: 800px;
     text-align: center;
-    font-size: 24px;
+    font-size: inherit;
   }
 
 
