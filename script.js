@@ -51,7 +51,7 @@ barba.init({
             highlightColour: "white",
             venues: ["The Steel Yard"],
           });
-        }, 50);
+        }, 1000);
       },
 
       afterEnter({ next }) {
