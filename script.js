@@ -51,11 +51,11 @@ barba.init({
             highlightColour: "white",
             venues: ["The Steel Yard"],
           });
-        }, 1000);
+        }, 600);
       },
 
       afterEnter({ next }) {
-        gsap.from(".dice-widget-container", {
+        let moveUp = gsap.from(".dice-widget-container", {
           opacity: 1,
           y: 300,
           duration: 0.8,
@@ -65,6 +65,9 @@ barba.init({
           y: 0,
           duration: 0.8,
         });
+
+        let currentDelay = moveUp.delay();
+        myAnimation.delay(1);
       },
     },
 
