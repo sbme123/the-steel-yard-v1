@@ -34,24 +34,28 @@ barba.init({
           duration: 0.8,
         });
 
-        setTimeout(() => {
-          DiceEventListWidget.create({
-            information: "full",
-            eventTitle: "event",
-            showImages: false,
-            showAudio: true,
-            showNewBadge: false,
-            layout: "list",
-            roundButtons: false,
-            theme: "dark",
-            fontFamily: "inherit",
-            partnerId: "ca4be586",
-            apiKey: "BOPJlQwh5G7RidWh6ZBth3MVRPQblXxJ6Iz5yh5V",
-            version: 2,
-            highlightColour: "white",
-            venues: ["The Steel Yard"],
-          });
-        }, 600);
+        if (
+          script.src === "https://widgets.dice.fm/dice-event-list-widget.js"
+        ) {
+          setTimeout(() => {
+            DiceEventListWidget.create({
+              information: "full",
+              eventTitle: "event",
+              showImages: false,
+              showAudio: true,
+              showNewBadge: false,
+              layout: "list",
+              roundButtons: false,
+              theme: "dark",
+              fontFamily: "inherit",
+              partnerId: "ca4be586",
+              apiKey: "BOPJlQwh5G7RidWh6ZBth3MVRPQblXxJ6Iz5yh5V",
+              version: 2,
+              highlightColour: "white",
+              venues: ["The Steel Yard"],
+            });
+          }, 600);
+        }
       },
 
       afterEnter({ next }) {
