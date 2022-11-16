@@ -55,7 +55,7 @@ barba.init({
               venues: ["The Steel Yard"],
             });
           }, 600);
-        }
+        } /* No end to the if statement */
       },
 
       afterEnter({ next }) {
